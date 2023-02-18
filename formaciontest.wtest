@@ -1,0 +1,20 @@
+import formacion.*
+import vagones.*
+describe "Test de la formacion"{
+	const formacion = new Formacion()
+	const vagon1 = new VagonPasajeros(largo=10, ancho=4, tieneBanios=true, estaOrdenado=true)
+	const vagon2 = new VagonPasajeros(largo=7, ancho=2, tieneBanios=false, estaOrdenado=false)
+	const vagon3 = new VagonCarga(cargaMaximaIdeal=6800, cantiMaderasSueltas=5)
+	const vagon4 = new VagonDormitorio(compartimentos=3, camasPorCompartimento=3)
+	
+	method initialize(){
+		formacion.agregarVagon(vagon1)
+		formacion.agregarVagon(vagon2)
+		formacion.agregarVagon(vagon3)
+		formacion.agregarVagon(vagon4)
+	}		
+	
+	test "cantidad de vagones" {
+		assert.equals(4, formacion.cantidaDeVagones())
+	}
+}

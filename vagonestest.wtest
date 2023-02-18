@@ -1,0 +1,48 @@
+import vagones.*
+describe "Test de Vagones de Carga" {
+	const vagonCarga = new VagonCarga(cargaMaximaIdeal=6800, cantiMaderasSueltas=5)
+	
+	test "cantidad de pasajeros"{
+		assert.equals(0, vagonCarga.cantPasajeros())
+	}
+	
+	test "peso maximo" {
+		assert.equals(6300, vagonCarga.pesoMaximo())
+	}
+	
+	test "carga maxima" {
+		assert.equals(4800, vagonCarga.carga())
+	} 
+	
+	test "tiene baños" {
+		assert.notThat(vagonCarga.tieneBanios())
+	}
+	
+	test "realizar Manteniento y controlar carga y peso"{
+		vagonCarga.realizarMantenimiento()
+		assert.equals(5600, vagonCarga.carga())
+		assert.equals(1500+5600, vagonCarga.pesoMaximo())
+		
+	}
+}
+
+
+describe "Test de Vagones de Pasajeros" {
+	const vagonPajajeros = new VagonPasajeros(largo=10, ancho=20, tieneBanios=true, estaOrdenado=false)
+	test "largo" {
+		assert.equals(10,vagonPajajeros.largo())
+	}
+	test "tiene Banios" {
+		assert.that(vagonPajajeros.tieneBanios())
+	}
+	/*Implemntar todos los test faltantes */
+	
+}	
+
+describe "Test de Vagones dormitorio"{
+	const vagonDormitorio = new VagonDormitorio(compartimentos=8,camasPorCompartimento=3)
+	test "compartiemntos" {
+		assert.equals(8, vagonDormitorio.compartimentos())
+	}
+}
+
